@@ -23,6 +23,7 @@ public class addUserComponent {
 		else {
 			u.setCreditLimit(0);
 		}
+		u.setOutstandingAmount(0.0);
 		return u;
 	}
 
