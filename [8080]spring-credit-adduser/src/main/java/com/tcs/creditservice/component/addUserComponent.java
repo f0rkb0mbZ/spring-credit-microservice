@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import com.tcs.creditservice.models.Users;
 
 @Component
-public class addUserComponent {
+public class AddUserComponent {
 		
 	public Users setCredit(Users u) {
 		if (u.getAccountType().equals("basic")) {

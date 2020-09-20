@@ -3,6 +3,7 @@ package com.tcs.creditbillgenerator.controller;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import com.tcs.creditbillgenerator.entity.Users;
@@ -32,8 +33,14 @@ public class BillController {
 
 	@GetMapping("/users/{id}/getbill")
 	public Map<Object, Object> generateBillByUser(@PathVariable Integer id) {
-		Users user = userService.getUserById(id);
-		return this.billMaker(user);
+		try {
+			Users user = userService.getUserById(id);
+			return this.billMaker(user);
+		} catch (NoSuchElementException e) {
+			e.printStackTrace();
+			System.out.println("There is no user with id: " + id);
+			return null;
+		}
 	}
 
 	@GetMapping("/users/getbills")

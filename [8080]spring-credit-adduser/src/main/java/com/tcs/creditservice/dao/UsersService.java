@@ -21,7 +21,7 @@ public class UsersService {
 	}
 
 	public Users getUserById(int id) {
-		return usersRepository.findById(id).orElse(null);
+		return usersRepository.findById(id).get();
 	}
 
 	public void updateUser(int id, Users u) {
@@ -29,6 +29,8 @@ public class UsersService {
 		if (u1 != null) {
 			u.setId(id);
 			usersRepository.save(u);
+		} else {
+			System.out.println("There is no record with id: " + id);
 		}
 	}
 
